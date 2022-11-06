@@ -1,0 +1,104 @@
+body {
+    background-color: rgb(228, 228, 228);
+}
+
+img {
+    max-width: 90%;
+    height: auto;
+    border-radius: var(--bs-border-radius) !important;
+}
+
+.navbar-brand {
+    font-size: 1.5em;
+    font-weight: 700;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+}
+
+a:hover {
+    color: rgb(145, 0, 202);
+    text-decoration: none;
+}
+
+.wrapper {
+    min-height: 80vh;
+}
+
+/* .sidebar li{
+    text-decoration: none;
+    font-size: 1.3rem;
+    margin-top: 4px;
+} */
+
+.container-fluid {
+    padding-left: 0px;
+}
+
+.sidebar {
+    height: 100%;
+    margin-top: 1.1rem;
+    margin-left: 1rem;
+}
+
+.sidebar-title {
+    background-color: #212529;
+    font-size: 1.25em;
+    font-weight: 700;
+}
+
+.sidebar img {
+    max-width: 100%;
+    height: auto;
+}
+
+.footer {
+    min-height: 125px;
+}
+
+.play img {
+    max-width: 100%;
+}
+
+button a {
+    color: white;
+}
+
+button a:hover {
+    color: white;
+    text-decoration: none;
+}
+
+.swal2-confirm {
+    background-color: #212529 !important; 
+}
+
+.profile img {
+    height: 100%;
+    border-radius: 150px !important;
+}
+
+.profile-films {
+    height: 150px;
+    display: flex;
+}
+
+.profile-films img{
+    height: 100%;
+}
+
+.user {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.date {
+    font-size: 0.7rem;
+}
+
+.comment {
+    display: flex;
+    align-content: flex-start;
+}
