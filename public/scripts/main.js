@@ -73,7 +73,6 @@ $(function() {
 			// dataType: 'html',
 			success: function(result) {
 				json = jQuery.parseJSON(result);
-				// console.log(json);
 				if (json.url) {
 					window.location.href = '/' + json.url;
 				} else {
@@ -110,7 +109,7 @@ $(function() {
 				alert('Error!');
 			}
 		})
-	})
+	});
 	
 	$('.comment-item').on('click', '.delete-comment', function (e) {
 		e.preventDefault();
@@ -132,6 +131,41 @@ $(function() {
 				alert('Error!');
 			}
 		})
-	})
+	});
+
+	$('#live_search').keyup(function() {
+		let input = $(this).val();
+		if (input != '') {
+			$.ajax({
+				url: '/search/livesearch',
+				type: 'POST',
+				data: {data: input},
+				success: function (result) {
+					$('#searchresult').html(result);
+					$('#searchresult').css("display", "block");
+				}
+			});
+		} else {
+			$('#searchresult').css("display", "none");
+		}
+
+	});
+
+	// $('form.search').submit(function(e) {
+	// 	e.preventDefault();
+	// 	var input = $('input', this).val();
+	// 	if (input != '') {
+	// 		$.ajax({
+	// 			url: '/search/results',
+	// 			type: 'POST',
+	// 			data: {data: input},
+	// 			success: function (result) {
+	// 				json = jQuery.parseJSON(result);
+	// 				console.log(result);
+	// 				window.location.href = '/' + json.url;
+	// 			}
+	// 		})
+	// 	}
+	// });
 
 });

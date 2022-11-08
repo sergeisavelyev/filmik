@@ -52,13 +52,15 @@
                         <?php endif; ?>
                     </ul>
                 </div>
-                <form class="d-flex mx-3" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Поиск" aria-label="Поиск">
+                <form action="<?php echo PATH . '/search/results'; ?>" method="POST" class="d-flex mx-3 search" role="search">
+                    <input class="form-control me-2" id="live_search" type="search" name="input" placeholder="Поиск" aria-label="Поиск">
                     <button class="btn btn-outline-light" type="submit">Поиск</button>
                 </form>
             </div>
         </div>
     </nav>
+    <ul class="list-group searchresult" id="searchresult">
+    </ul>
 
     <div class="container-fluid">
         <div class="row wrapper">

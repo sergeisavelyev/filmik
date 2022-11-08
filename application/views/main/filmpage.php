@@ -10,7 +10,7 @@
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb p-2">
                             <li class="breadcrumb-item"><a href="/"><i class="fas fa-home link-dark"></i></a></li>
-                            <li class="breadcrumb-item"><a href="/category/<?php echo ($category_data['slug']); ?>"><?php echo ($category_data['category_title']); ?></a></li>
+                            <li class="breadcrumb-item "><a href="/category/<?php echo ($category_data['slug']); ?>"><?php echo ($category_data['category_title']); ?></a></li>
                             <li class="breadcrumb-item active"><?php echo ($film_data['title']); ?></li>
                         </ol>
                     </nav>

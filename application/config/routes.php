@@ -23,6 +23,18 @@ return [
 		'action' => 'category',
 	],
 
+	// SearchController
+
+	'search/livesearch' => [
+		'controller' => 'search',
+		'action' => 'livesearch',
+	],
+
+	'search/results' => [
+		'controller' => 'search',
+		'action' => 'results',
+	],
+
 	// RatingController
 
 	'rating/like\?id\={id:\d+}' => [
