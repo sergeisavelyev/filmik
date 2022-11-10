@@ -20,7 +20,7 @@ class CommentsController extends Controller
     public function addAction()
     {
         $text = $_POST['text'];
-        $user = $_SESSION['user_login'];
+        $user = $_SESSION['user_login'] ?? NULL;
         $film_id = $_POST['id'];
         $user_id = $_SESSION['user_id'] ?? NULL;
 

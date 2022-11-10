@@ -69,32 +69,39 @@
                     <ul class="list-group">
                         <?php if (isset($_SESSION['authorize'])) : ?>
                             <li class="list-group-item sidebar-title "><a href="<?php echo (PATH) . '/account'; ?>" class="text-light"><i class="fa-regular fa-user"></i> Профиль</a></li>
+                            <li class="list-group-item"><i class="fa-solid fa-display"></i> Я смотрю</li>
+                            <li class="list-group-item"><i class="fa-regular fa-bookmark"></i> Закладки</li>
+                            <li class="list-group-item">
+                                <a href="<?php echo (PATH) . '/account/playlists'; ?>">
+                                    <i class="fa-solid fa-list-ul"></i> Плейлисты
+                                </a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="<?php echo (PATH) . '/account/comments'; ?>">
+                                    <i class="fa-regular fa-comments"></i> Комментарии
+                                </a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="<?php echo (PATH) . '/account/liked'; ?>">
+                                    <i class="fa-regular fa-thumbs-up"></i> Понравилось
+                                </a>
+                            </li>
+                            <li class="list-group-item">
+                                <a href="<?php echo (PATH) . '/account/disliked'; ?>">
+                                    <i class="fa-regular fa-thumbs-down"></i> Не понравилось
+                                </a>
+                            </li>
+                            <li class="list-group-item"><i class="fa-regular fa-clock"></i> История</li>
                         <?php else : ?>
-                            <li class="list-group-item sidebar-title disabled bg-dark"><a href="<?php echo (PATH) . '/account'; ?>" class="text-light"><i class="fa-regular fa-user"></i> Профиль</a></li>
+                            <li class="list-group-item sidebar-title disabled bg-dark text-light"><i class="fa-regular fa-user"></i> Профиль</li>
+                            <li class="list-group-item"><i class="fa-solid fa-display"></i> Я смотрю</li>
+                            <li class="list-group-item"><i class="fa-regular fa-bookmark"></i> Закладки</li>
+                            <li class="list-group-item"><i class="fa-solid fa-list-ul"></i> Плейлисты</li>
+                            <li class="list-group-item"><i class="fa-regular fa-comments"></i> Комментарии</li>
+                            <li class="list-group-item"><i class="fa-regular fa-thumbs-up"></i> Понравилось</li>
+                            <li class="list-group-item"><i class="fa-regular fa-thumbs-down"></i> Не понравилось</li>
+                            <li class="list-group-item"><i class="fa-regular fa-clock"></i> История</li>
                         <?php endif; ?>
-                        <li class="list-group-item"><i class="fa-solid fa-display"></i> Я смотрю</li>
-                        <li class="list-group-item"><i class="fa-regular fa-bookmark"></i> Закладки</li>
-                        <li class="list-group-item">
-                            <a href="<?php echo (PATH) . '/account/playlists'; ?>">
-                                <i class="fa-solid fa-list-ul"></i> Плейлисты
-                            </a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="<?php echo (PATH) . '/account/comments'; ?>">
-                                <i class="fa-regular fa-comments"></i> Комментарии
-                            </a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="<?php echo (PATH) . '/account/liked'; ?>">
-                                <i class="fa-regular fa-thumbs-up"></i> Понравилось
-                            </a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="<?php echo (PATH) . '/account/disliked'; ?>">
-                                <i class="fa-regular fa-thumbs-down"></i> Не понравилось
-                            </a>
-                        </li>
-                        <li class="list-group-item"><i class="fa-regular fa-clock"></i> История</li>
                     </ul>
                     <ul class="list-group mt-2">
                         <li class="list-group-item sidebar-title"><a href="<?php echo (PATH) . '/category/films/'; ?>" class="text-light"><i class="fa-solid fa-photo-film"></i> Библиотека</a></li>

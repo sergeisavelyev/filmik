@@ -1,5 +1,7 @@
 <?php if (empty($film_info)) : ?>
-    <h3>Фильм не найден</h3>
+    <div class="col-lg-8 col-sm-9 mt-3">
+        <h3>Фильм не найден</h3>
+    </div>
 <?php else : ?>
     <?php foreach ($film_info as $film_data) : ?>
         <div class="col-lg-8 col-sm-9 mt-3">

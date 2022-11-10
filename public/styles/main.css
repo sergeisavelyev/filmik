@@ -109,3 +109,9 @@ button a:hover {
     display: flex;
     align-content: flex-start;
 }
+
+
+.card-login {
+    width: 50%;
+    margin-top: 10%;
+}

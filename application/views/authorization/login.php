@@ -3,7 +3,7 @@
         <div class="col-sm col-lg-5 mx-3">
             <h2>Авторизация</h2>
             <hr>
-            <form action="/authorization/login" method="post" class="p-3">
+            <form action="/authorization/login" class="account" method="post" class="p-3">
                 <div class="form-group mb-3">
                     <div class="row justify-content-start">
                         <label class="col-2">Логин</label>

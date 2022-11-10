@@ -28,7 +28,7 @@ class MainController extends Controller
 		$vars = [
 			'film_info' => $film,
 			'comments' => $comments->getComments($this->route['id']),
-			'category_info' => $this->model->categoryById($film[0]['category_id']),
+			'category_info' => $this->model->categoryById($film[0]['category_id'] ?? ''),
 			'film_rating' => $filmRating->getCountLikes($this->route['id']),
 			'film_disrating' => $filmRating->getCountDislikes($this->route['id']),
 			'check_liked' => $filmRating->checkLiked($this->route['id'], $_SESSION['user_id'] ?? ''),

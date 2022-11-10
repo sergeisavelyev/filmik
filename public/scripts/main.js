@@ -120,6 +120,7 @@ $(function() {
 			type: 'POST',
 			data: {id: commentId},
 			success: function (result) {
+				console.log(result);
 				json = jQuery.parseJSON(result);
 				Swal.fire(
 					json.message,
@@ -167,5 +168,28 @@ $(function() {
 	// 		})
 	// 	}
 	// });
+
+	$('#admin').on('submit', function (e) {
+		e.preventDefault();
+		let login = $('.login', this).val();
+		let password = $('.password', this).val();
+		$.ajax({
+			url: '/admin/login',
+			type: 'POST',
+			data: {login: login, password: password},
+			success: function(result) {
+				json = jQuery.parseJSON(result);
+				if (json.url) {
+					window.location.href = '/' + json.url;
+				} else {
+					Swal.fire(
+						json.message,
+						'',
+						json.status
+					);
+				}
+			}
+		})
+	})
 
 });

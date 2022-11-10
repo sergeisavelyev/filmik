@@ -6,11 +6,11 @@ use application\core\Controller;
 
 class AuthorizationController extends Controller
 {
-    public function __construct($route)
-    {
-        parent::__construct($route);
-        $this->view->layout = 'authorization';
-    }
+    // public function __construct($route)
+    // {
+    //     parent::__construct($route);
+    //     $this->view->layout = 'authorization';
+    // }
 
     public function loginAction()
     {
@@ -43,6 +43,7 @@ class AuthorizationController extends Controller
                 $this->view->message('error', 'Ошибка обработки запроса');
             }
             $this->view->message('success', 'Поздравляем! Вы успешно зарегестрированы');
+            $this->view->location('account');
         }
         $this->view->render('Регистрация');
     }
