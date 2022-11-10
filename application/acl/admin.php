@@ -14,6 +14,7 @@ return [
         'logout',
         'add',
         'edit',
+        'films',
         'delete',
     ],
 ];

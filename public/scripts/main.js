@@ -70,7 +70,6 @@ $(function() {
 			url:'/comments/add',
 			type: 'POST',
 			data: {text: text, id: id},
-			// dataType: 'html',
 			success: function(result) {
 				json = jQuery.parseJSON(result);
 				if (json.url) {
@@ -88,6 +87,7 @@ $(function() {
 							'',
 							json.status
 						);
+						// $('textarea.text').val('');
 						$('div.comments').prepend($('<hr>'));
 						$('div.comments').prepend($('<div>', {
 							'class': 'text',
@@ -190,6 +190,25 @@ $(function() {
 				}
 			}
 		})
+	})
+
+	$('form.admin-add').on('submit', function (e) {
+		e.preventDefault();
+		$.ajax({
+			url: '/admin/add',
+			type: 'POST',
+			data: new FormData(this),
+			contentType: false,
+			processData: false,
+			success: function (result) {
+				json = jQuery.parseJSON(result);
+				Swal.fire(
+					json.message,
+					'',
+					json.status
+				);
+			},
+		});
 	})
 
 });

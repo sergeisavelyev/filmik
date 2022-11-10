@@ -32,10 +32,22 @@ class AdminController extends Controller
 
     public function addAction()
     {
-        $this->view->render('Добавить пост');
+        if (!empty($_POST)) {
+            if (!$this->model->addValidate($_POST)) {
+                $this->view->message('error', $this->model->error);
+            };
+            $this->model->addFilm($_POST);
+            $this->view->message('success', 'Фильм добавлен');
+        }
+        $this->view->render('Добавить фильм');
     }
 
     public function editAction()
+    {
+        $this->view->render('Редактировать');
+    }
+
+    public function filmsAction()
     {
         $this->view->render('Редактировать');
     }
