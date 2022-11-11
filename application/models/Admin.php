@@ -22,18 +22,18 @@ class Admin extends Model
             $this->error = 'Поле "Год" не может быть пустым и может состоять только из числа из 4 цифр';
             return false;
         }
-        if (empty($post['text']) || strlen($post['text']) > 1000) {
-            $this->error = 'Поле "Описание" не может быть пустым и не должно превышать 1000 символов';
+        if (empty($post['text']) || strlen($post['text']) > 10000) {
+            $this->error = 'Поле "Описание" не может быть пустым и не должно превышать 10000 символов';
             return false;
         }
         if (empty($post['category'])) {
             $this->error = 'Выберите категорию';
             return false;
         }
-        // if (empty($_FILES['img']['tmp_name'])) {
-        //     $this->error = 'Прикрепите изображение';
-        //     return false;
-        // }
+        if (empty($_FILES['img']['tmp_name'])) {
+            $this->error = 'Прикрепите изображение';
+            return false;
+        }
         return true;
     }
 
@@ -50,6 +50,34 @@ class Admin extends Model
         ];
         $this->db->query('INSERT INTO films (category_id, slug, date) VALUES (:category_id, :slug, :date)', $films);
         $this->db->query('INSERT INTO films_description (title, content) VALUES (:title, :text)', $films_d);
-        // return $this->db->lastInsertId();
+        return $this->db->lastInsertId();
+    }
+
+    public function postUploadImage($path, $id, $post)
+    {
+        if ($post['category'] == 1) {
+            move_uploaded_file($path, 'public/images/films/' . $id . '.jpg');
+        }
+        if ($post['category'] == 2) {
+            move_uploaded_file($path, 'public/images/serials/' . $id . '.jpg');
+        }
+        if ($post['category'] == 3) {
+            move_uploaded_file($path, 'public/images/docs/' . $id . '.jpg');
+        }
+    }
+
+    public function addImage($id, $post)
+    {
+        $films = [
+            'id' => $id,
+            'img' => '/public/images/films/' . $id . '.jpg',
+        ];
+        if ($post['category'] == 2) {
+            $films['img'] = '/public/images/serials/' . $id . '.jpg';
+        }
+        if ($post['category'] == 3) {
+            $films['img'] = '/public/images/docs/' . $id . '.jpg';
+        }
+        $this->db->query('UPDATE films SET img = :img WHERE id = :id', $films);
     }
 }

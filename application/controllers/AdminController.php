@@ -36,7 +36,9 @@ class AdminController extends Controller
             if (!$this->model->addValidate($_POST)) {
                 $this->view->message('error', $this->model->error);
             };
-            $this->model->addFilm($_POST);
+            $id = $this->model->addFilm($_POST);
+            $this->model->postUploadImage($_FILES['img']['tmp_name'], $id, $_POST);
+            $this->model->addImage($id, $_POST);
             $this->view->message('success', 'Фильм добавлен');
         }
         $this->view->render('Добавить фильм');
