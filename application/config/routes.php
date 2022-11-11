@@ -120,6 +120,11 @@ return [
 		'action' => 'add',
 	],
 
+	'admin/edit/{id:\d+}' => [
+		'controller' => 'admin',
+		'action' => 'edit',
+	],
+
 	'admin/edit' => [
 		'controller' => 'admin',
 		'action' => 'edit',

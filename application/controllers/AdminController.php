@@ -46,7 +46,11 @@ class AdminController extends Controller
 
     public function editAction()
     {
-        $this->view->render('Редактировать');
+        $vars = [
+            'film_data' => $this->model->getFilm($this->route['id'] ?? ''),
+            'id' => $this->route['id'] ?? '',
+        ];
+        $this->view->render('Редактировать', $vars);
     }
 
     public function filmsAction()
@@ -62,6 +66,6 @@ class AdminController extends Controller
     public function logoutAction()
     {
         unset($_SESSION['admin']);
-        exit('Выход');
+        $this->view->redirect('admin/login');
     }
 }

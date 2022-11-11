@@ -211,4 +211,8 @@ $(function() {
 		});
 	})
 
+	$('tr').on('click', function () {
+		const id = $(this).attr('id');
+		window.location.href = '/admin/edit/' + id;
+	});
 });

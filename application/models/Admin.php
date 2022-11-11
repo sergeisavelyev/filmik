@@ -80,4 +80,16 @@ class Admin extends Model
         }
         $this->db->query('UPDATE films SET img = :img WHERE id = :id', $films);
     }
+
+    public function getFilm($id = 0)
+    {
+        if ($id) {
+            $params = [
+                'id' => $id,
+            ];
+            return $this->db->row('SELECT f.*, fd.* FROM films f JOIN films_description fd on f.id = fd.film_id WHERE id = :id', $params);
+        } else {
+            return $this->db->row('SELECT f.*, fd.* FROM films f JOIN films_description fd on f.id = fd.film_id');
+        }
+    }
 }
