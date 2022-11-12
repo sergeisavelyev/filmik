@@ -46,21 +46,38 @@ class AdminController extends Controller
 
     public function editAction()
     {
+        $id = $this->route['id'] ?? '';
+
         $vars = [
-            'film_data' => $this->model->getFilm($this->route['id'] ?? ''),
-            'id' => $this->route['id'] ?? '',
+            'film_data' => $this->model->getFilm($id),
+            'id' => $id,
         ];
+        if (!empty($_POST)) {
+            if (!$this->model->addValidate($_POST, 'edit')) {
+                $this->view->message('error', $this->model->error);
+            }
+            $this->model->editFilm($_POST, $id);
+            $this->model->postUploadImage($_FILES['img']['tmp_name'], $id, $_POST);
+            $this->model->addImage($id, $_POST);
+            $this->view->message('success', 'Фильм добавлен');
+        }
         $this->view->render('Редактировать', $vars);
     }
 
     public function filmsAction()
     {
-        $this->view->render('Редактировать');
+        $vars = [
+            'film_data' => $this->model->getFilm(),
+        ];
+        $this->view->render('Редактировать', $vars);
     }
 
     public function deleteAction()
     {
-        exit('Удаление');
+        $vars = [
+            'film_data' => $this->model->getFilm(),
+        ];
+        $this->view->render('Удалить', $vars);
     }
 
     public function logoutAction()

@@ -16,7 +16,7 @@
                 </thead>
                 <tbody>
                     <?php foreach ($film_data as $film) : ?>
-                        <tr id="<?php echo $film['id']; ?>" class="edit-film">
+                        <tr id="<?php echo $film['id']; ?>" class="delete-film">
                             <th scope="row"><?php echo $film['id']; ?></th>
                             <td><?php echo $film['title']; ?></td>
                             <td><?php echo $film['slug']; ?></td>
@@ -35,10 +35,10 @@
                     <div class="row">
                         <div class="col-sm-4">
                             <?php foreach ($film_data as $film) : ?>
-                                <form action="/admin/edit/<?php echo $film['id']; ?>" class="admin-edit" id="<?php echo $film['id']; ?>">
+                                <form action="/admin/delete/<?php echo $film['id']; ?>">
                                     <div class="form-group mb-2">
                                         <label>Название</label>
-                                        <input class="form-control" type="text" value="<?php echo htmlspecialchars($film['title'], ENT_QUOTES); ?>" name="title">
+                                        <input class="form-control" type="text" value="<?php echo htmlspecialchars($film['title'], ENT_QUOTES); ?>" name="name">
                                     </div>
                                     <div class="form-group mb-2">
                                         <label>Slug</label>

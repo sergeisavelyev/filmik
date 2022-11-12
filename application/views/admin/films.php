@@ -1,31 +1,39 @@
 <div class="content-wrapper">
     <div class="container-fluid">
-        <div class="card mb-3">
-            <div class="card-header">Посты</div>
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-sm-4">
-                        <?php if (empty($list)) : ?>
-                            <p>Список фильмов пуст</p>
-                        <?php else : ?>
-                            <table class="table">
-                                <tr>
-                                    <th>Название</th>
-                                    <th>Редактировать</th>
-                                    <th>Удалить</th>
-                                </tr>
-                                <?php foreach ($list as $val) : ?>
-                                    <tr>
-                                        <td><?php echo htmlspecialchars($val['name'], ENT_QUOTES); ?></td>
-                                        <td><a href="/admin/edit/<?php echo $val['id']; ?>" class="btn btn-primary">Редактировать</a></td>
-                                        <td><a href="/admin/delete/<?php echo $val['id']; ?>" class="btn btn-danger">Удалить</a></td>
-                                    </tr>
-                                <?php endforeach; ?>
-                            </table>
-                        <?php endif; ?>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <?php if (empty($film_data)) : ?>
+            <p>Список фильмов пуст</p>
+        <?php else : ?>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Название</th>
+                        <th scope="col">Slug</th>
+                        <th scope="col">Год</th>
+                        <th scope="col">Описание</th>
+                        <th scope="col">Категория</th>
+                        <th scope="col">Изображение</th>
+                        <th scope="col">Действия</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($film_data as $film) : ?>
+                        <tr id="<?php echo $film['id']; ?>">
+                            <th scope="row"><?php echo $film['id']; ?></th>
+                            <td><?php echo $film['title']; ?></td>
+                            <td><?php echo $film['slug']; ?></td>
+                            <td><?php echo $film['date']; ?></td>
+                            <td><?php echo mb_strimwidth($film['content'], 0, 100, "..."); ?></td>
+                            <td><?php echo $film['category_id']; ?></td>
+                            <td><?php echo $film['img']; ?></td>
+                            <td>
+                                <i class="edit-film fa-regular fa-pen-to-square mx-2" id="<?php echo $film['id']; ?>"></i>
+                                <i class="delete-film fa-solid fa-trash-can" id="<?php echo $film['id']; ?>"></i>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        <?php endif; ?>
     </div>
 </div>

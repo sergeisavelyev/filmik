@@ -211,8 +211,34 @@ $(function() {
 		});
 	})
 
-	$('tr').on('click', function () {
+	$('tr.edit-film').on('click', function () {
+		const id = $(this).attr('id');
+		window.location.href = '/filmpage/' + id;
+	});
+
+	$('.edit-film').on('click', function () {
 		const id = $(this).attr('id');
 		window.location.href = '/admin/edit/' + id;
 	});
+
+	$('form.admin-edit').on('submit', function (e) {
+		e.preventDefault();
+		const id = $(this).attr('id');
+		$.ajax({
+			url: '/admin/edit/' + id,
+			type: 'POST',
+			data: new FormData(this),
+			contentType: false,
+			processData: false,
+			success: function(result) {
+				json = jQuery.parseJSON(result);
+				Swal.fire(
+					json.message,
+					'',
+					json.status
+				);
+			}
+		})
+	});
+
 });

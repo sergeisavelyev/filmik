@@ -37,6 +37,11 @@ a:hover {
     padding-left: 0px;
 }
 
+.searchresult li {
+    background-color: rgb(228, 228, 228);
+    border-radius: 10%;
+}
+
 .searchresult {
     position: absolute;
     left: 70%;
@@ -80,6 +85,10 @@ button a:hover {
 
 .swal2-confirm {
     background-color: #212529 !important; 
+}
+
+.swal2-loader {
+    border-color: #fff !important;
 }
 
 .profile img {

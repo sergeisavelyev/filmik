@@ -8,6 +8,7 @@
     <link href="/public/bootstrap/css/bootstrap.css" rel="stylesheet">
     <link href="/public/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="/public/styles/main.css" rel="stylesheet">
+    <link rel="stylesheet" href="/node_modules/@sweetalert2/theme-bootstrap-4/bootstrap-4.css">
     <link rel="icon" type="image.png" sizes="32x32" href="/public/images/logo.png">
 </head>
 
@@ -155,7 +156,7 @@
     <script src="/public/scripts/main.js"></script>
     <script src="/public/scripts/popper.js"></script>
     <script src="/public/scripts/bootstrap.js"></script>
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="/node_modules/sweetalert2/dist/sweetalert2.min.js"></script>
 </body>
 
 </html>

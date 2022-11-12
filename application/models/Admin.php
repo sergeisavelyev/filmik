@@ -8,7 +8,7 @@ class Admin extends Model
 {
     public $error;
 
-    public function addValidate($post)
+    public function addValidate($post, $type = 'add')
     {
         if (empty($post['title']) || strlen($post['title']) > 100) {
             $this->error = 'Поле "Название" не может быть пустым и не должно превышать 100 символов';
@@ -30,7 +30,7 @@ class Admin extends Model
             $this->error = 'Выберите категорию';
             return false;
         }
-        if (empty($_FILES['img']['tmp_name'])) {
+        if (empty($_FILES['img']['tmp_name']) && $type == 'add') {
             $this->error = 'Прикрепите изображение';
             return false;
         }
@@ -51,6 +51,23 @@ class Admin extends Model
         $this->db->query('INSERT INTO films (category_id, slug, date) VALUES (:category_id, :slug, :date)', $films);
         $this->db->query('INSERT INTO films_description (title, content) VALUES (:title, :text)', $films_d);
         return $this->db->lastInsertId();
+    }
+
+    public function editFilm($post, $id)
+    {
+        $films = [
+            'category_id' => $post['category'],
+            'slug' => $post['slug'],
+            'date' => $post['date'],
+            'id' => $id,
+        ];
+        $films_d = [
+            'title' => $post['title'],
+            'text' => $post['text'],
+            'id' => $id,
+        ];
+        $this->db->query('UPDATE films SET category_id = :category_id, slug = :slug, date = :date WHERE id = :id', $films);
+        $this->db->query('UPDATE films_description SET title = :title, content = :text WHERE film_id = :id', $films_d);
     }
 
     public function postUploadImage($path, $id, $post)
