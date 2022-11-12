@@ -5,6 +5,7 @@ namespace application\controllers;
 use application\core\Controller;
 use application\models\Rating;
 use application\models\Comments;
+use application\lib\Pagination;
 
 
 class MainController extends Controller
@@ -40,9 +41,12 @@ class MainController extends Controller
 	public function categoryAction()
 	{
 		$category = $this->model->getCategory($this->route['name']);
+		// debug($this->route);
+		$pagination = new Pagination($this->route, 500, 1);
 		$vars = [
 			'category_info' => $category,
 			'films' => $this->model->filmsById($category[0]['id']),
+			'pagination' => $pagination->get(),
 		];
 		$this->view->render('Категория', $vars);
 	}

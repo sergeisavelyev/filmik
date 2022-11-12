@@ -20,5 +20,6 @@
                 </div>
             <?php endforeach; ?>
         </div>
+        <?php echo $pagination; ?>
     </div>
 </div>

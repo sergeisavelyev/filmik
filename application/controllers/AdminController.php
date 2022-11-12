@@ -57,9 +57,11 @@ class AdminController extends Controller
                 $this->view->message('error', $this->model->error);
             }
             $this->model->editFilm($_POST, $id);
-            $this->model->postUploadImage($_FILES['img']['tmp_name'], $id, $_POST);
-            $this->model->addImage($id, $_POST);
-            $this->view->message('success', 'Фильм добавлен');
+            if (!empty($_FILES['img']['tmp_name'])) {
+                $this->model->postUploadImage($_FILES['img']['tmp_name'], $id, $_POST);
+                $this->model->addImage($id, $_POST);
+            }
+            $this->view->message('success', 'Фильм отредактирован');
         }
         $this->view->render('Редактировать', $vars);
     }
