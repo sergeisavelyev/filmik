@@ -41,11 +41,14 @@ class MainController extends Controller
 	public function categoryAction()
 	{
 		$category = $this->model->getCategory($this->route['name']);
-		// debug($this->route);
-		$pagination = new Pagination($this->route, 500, 1);
+		$count = $this->model->filmsByIdCount($category[0]['id']);
+
+		// debug($category[0]['id']);
+
+		$pagination = new Pagination($this->route, $count, 4);
 		$vars = [
 			'category_info' => $category,
-			'films' => $this->model->filmsById($category[0]['id']),
+			'films' => $this->model->filmsById($category[0]['id'], $this->route),
 			'pagination' => $pagination->get(),
 		];
 		$this->view->render('Категория', $vars);

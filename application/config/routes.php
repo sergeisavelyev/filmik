@@ -18,7 +18,12 @@ return [
 		'action' => 'filmpage',
 	],
 
-	'category/{name:.+}' => [
+	// 'category/{name:.+}' => [
+	// 	'controller' => 'main',
+	// 	'action' => 'category',
+	// ],
+
+	'category/{name:.+}/{page:\d+}' => [
 		'controller' => 'main',
 		'action' => 'category',
 	],

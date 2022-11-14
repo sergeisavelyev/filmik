@@ -4,7 +4,7 @@ namespace application\lib;
 
 class Pagination
 {
-    private $max = 10;
+    private $max = 5;
     private $route;
     private $limit;
     private $total;
@@ -33,10 +33,10 @@ class Pagination
         }
         if (!is_null($links)) {
             if ($this->current_page > 1) {
-                $links = $this->generateHtml(1, 'Вперед') . $links;
+                $links = $this->generateHtml(1, 'Начало') . $links;
             }
             if ($this->current_page < $this->amount) {
-                $links .= $this->generateHtml($this->amount, 'Назад');
+                $links .= $this->generateHtml($this->amount, 'Конец');
             }
         }
         $html .= $links . ' </ul></nav>';
@@ -48,7 +48,7 @@ class Pagination
         if (!$text) {
             $text = $page;
         }
-        return '<li class="page-item"><a class="page-link" href="/' . $this->route['controller'] . '/' . $this->route['action'] . '/' . $page . '">' . $text . '</a></li>';
+        return '<li class="page-item"><a class="page-link" href="/' . $this->route['action'] . '/' . $this->route['name'] . '/' . $page . '">' . $text . '</a></li>';
     }
 
     public function limits()

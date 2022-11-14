@@ -120,7 +120,6 @@ $(function() {
 			type: 'POST',
 			data: {id: commentId},
 			success: function (result) {
-				console.log(result);
 				json = jQuery.parseJSON(result);
 				Swal.fire(
 					json.message,

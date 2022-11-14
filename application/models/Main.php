@@ -43,15 +43,34 @@ class Main extends Model
 		return $this->db->row('SELECT c.* , fd.film_id FROM category c JOIN films_description fd ON c.id = fd.film_id WHERE id = :id', $params);
 	}
 
-	public function filmsById($id)
+	public function filmsById($id, $route)
+	{
+		$max = 4;
+		$params = [
+			'id' => $id,
+			'max' => $max,
+			'start' => (($route['page'] ?? 1) - 1) * $max,
+		];
+		if ($id == '6') {
+			$params = [
+				'max' => $max,
+				'start' => (($route['page'] ?? 1) - 1) * $max,
+			];
+			return $this->db->row('SELECT f.* , fd.* FROM films f JOIN films_description fd ON f.id = fd.film_id WHERE f.hit = 1  ORDER BY f.id DESC LIMIT :start, :max', $params);
+		} else {
+			return $this->db->row('SELECT f.* , fd.* FROM films f JOIN films_description fd ON f.id = fd.film_id WHERE f.category_id = :id  ORDER BY f.id DESC LIMIT :start, :max', $params);
+		}
+	}
+
+	public function filmsByIdCount($id)
 	{
 		$params = [
 			'id' => $id,
 		];
 		if ($id == '6') {
-			return $this->db->row('SELECT f.* , fd.* FROM films f JOIN films_description fd ON f.id = fd.film_id WHERE f.hit = 1  ORDER BY f.id DESC LIMIT 20');
+			return $this->db->column('SELECT COUNT(id) FROM films WHERE hit = 1');
 		} else {
-			return $this->db->row('SELECT f.* , fd.* FROM films f JOIN films_description fd ON f.id = fd.film_id WHERE f.category_id = :id  ORDER BY f.id DESC', $params);
+			return $this->db->column('SELECT COUNT(id) FROM films WHERE category_id = :id', $params);
 		}
 	}
 }

@@ -127,12 +127,24 @@ button a:hover {
 
 .pagination {
     margin-top: 2rem;
-    border-radius: 0.25rem;
+}
+
+.pagination a {
+    border-radius: 5px;
+    border-style: none;
+}
+.pagination a:hover {
+    background: rgb(145, 0, 202);
+    color: #fff;
+}
+
+.pagination a.active {
+    border-radius: 5px;
 }
 
 .page-item.active .page-link {
-    background: #824191;
-    border-color: rgb(145, 0, 202);
+    background: #212529;
+    border-color: #000;
 }
 
 .page-link {
@@ -141,6 +153,7 @@ button a:hover {
     font-weight: 400;
     color: #000;
     border-color: rgb(106, 106, 106);
+    border-radius: 5px;
 }
 
 .page-item:hover {

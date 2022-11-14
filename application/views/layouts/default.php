@@ -22,16 +22,16 @@
             <div class="collapse navbar-collapse" id="navbarColor01">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="<?php echo (PATH) . '/category/hits/'; ?>">Новинки</a>
+                        <a class="nav-link" aria-current="page" href="<?php echo (PATH) . '/category/hits/1'; ?>">Новинки</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?php echo (PATH) . '/category/films/'; ?>">Фильмы</a>
+                        <a class="nav-link" href="<?php echo (PATH) . '/category/films/1'; ?>">Фильмы</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?php echo (PATH) . '/category/serials/'; ?>">Сериалы</a>
+                        <a class="nav-link" href="<?php echo (PATH) . '/category/serials/1'; ?>">Сериалы</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?php echo (PATH) . '/category/serials/'; ?>">Документальные</a>
+                        <a class="nav-link" href="<?php echo (PATH) . '/category/serials/1'; ?>">Документальные</a>
                     </li>
                 </ul>
                 <div class="dropdown">
